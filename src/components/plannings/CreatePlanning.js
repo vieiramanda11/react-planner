@@ -15,6 +15,10 @@ const CreatePlanning = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(state);
+    setState({
+      title: "",
+      content: "",
+    });
   };
 
   return (

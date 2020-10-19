@@ -15,6 +15,10 @@ const SignIn = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(state);
+    setState({
+      email: "",
+      password: "",
+    });
   };
 
   return (

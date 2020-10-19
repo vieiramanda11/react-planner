@@ -17,6 +17,12 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(state);
+    setState({
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+    });
   };
 
   return (
@@ -37,7 +43,7 @@ const SignUp = () => {
           <input
             type="password"
             id="password"
-            value={(state.password)}
+            value={state.password}
             onChange={handleChange}
           />
         </div>
