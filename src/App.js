@@ -4,6 +4,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import Dashboard from "./components/dashboard/Dashboard";
 import Navbar from "./components/layout/Navbar";
+import CreatePlanning from "./components/plannings/CreatePlanning";
 import PlanningDetail from "./components/plannings/PlanningDetail";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/project/:id" component={PlanningDetail} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
+          <Route path="/create" component={CreatePlanning} />
         </Switch>
       </div>
     </BrowserRouter>
