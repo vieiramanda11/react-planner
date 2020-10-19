@@ -2,12 +2,19 @@ import React from "react";
 import { useState } from "react";
 
 const CreatePlanning = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [state, setState] = useState({
+    title: "",
+    content: "",
+  });
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setState((previousState) => ({ ...previousState, [id]: value }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(title, content);
+    console.log(state);
   };
 
   return (
@@ -18,20 +25,17 @@ const CreatePlanning = () => {
           <label htmlFor="title">Title</label>
           <input
             type="text"
-            id="text"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
+            id="title"
+            value={state.title}
+            onChange={handleChange}
           />
         </div>
         <div className="input-field">
           <label htmlFor="password">Planning content</label>
           <textarea
-            name=""
             id="content"
-            value={content}
-            onChange={(event) => setContent(event.target.value)}
-            cols="30"
-            rows="10"
+            value={state.content}
+            onChange={handleChange}
             className="materialize-textarea"
           ></textarea>
         </div>

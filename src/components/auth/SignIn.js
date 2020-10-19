@@ -2,25 +2,32 @@ import React from "react";
 import { useState } from "react";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setState((previousState) => ({ ...previousState, [id]: value }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    console.log(state);
   };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="white">
-        <h5 className="grey-text text-darken-3">Sign Up</h5>
+        <h5 className="grey-text text-darken-3">Sign In</h5>
         <div className="input-field">
           <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            value={state.email}
+            onChange={handleChange}
           />
         </div>
         <div className="input-field">
@@ -28,8 +35,8 @@ const SignIn = () => {
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            value={state.password}
+            onChange={handleChange}
           />
         </div>
         <div className="input-field">

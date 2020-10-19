@@ -2,14 +2,21 @@ import React from "react";
 import { useState } from "react";
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+  });
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setState((previousState) => ({ ...previousState, [id]: value }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password, firstName, lastName);
+    console.log(state);
   };
 
   return (
@@ -21,8 +28,8 @@ const SignUp = () => {
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            value={state.email}
+            onChange={handleChange}
           />
         </div>
         <div className="input-field">
@@ -30,8 +37,8 @@ const SignUp = () => {
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            value={(state.password)}
+            onChange={handleChange}
           />
         </div>
         <div className="input-field">
@@ -39,8 +46,8 @@ const SignUp = () => {
           <input
             type="text"
             id="firstName"
-            value={firstName}
-            onChange={(event) => setFirstName(event.target.value)}
+            value={state.firstName}
+            onChange={handleChange}
           />
         </div>
         <div className="input-field">
@@ -48,8 +55,8 @@ const SignUp = () => {
           <input
             type="text"
             id="lastName"
-            value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
+            value={state.lastName}
+            onChange={handleChange}
           />
         </div>
         <div className="input-field">
