@@ -1,16 +1,13 @@
 import React from "react";
 import PlanningSummary from "./PlanningSummary";
-import { Link } from 'react-router-dom';
 
-const PlanningList = () => {
+const PlanningList = ({ plannings }) => {
   return (
     <div className="planning-list section">
-      <Link>
-        <PlanningSummary />
-      </Link>
-      <Link>
-        <PlanningSummary />
-      </Link>
+      {plannings &&
+        plannings.map((planning) => {
+          return <PlanningSummary planning={planning} key={planning.id} />;
+        })}
     </div>
   );
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { connect } from 'react-redux';
+import { createPlanning } from '../../store/actions/planningActions';
 
-const CreatePlanning = () => {
+const CreatePlanning = ({ createPlanning }) => {
   const [state, setState] = useState({
     title: "",
     content: "",
@@ -14,7 +16,8 @@ const CreatePlanning = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(state);
+    createPlanning(state);
+
     setState({
       title: "",
       content: "",
@@ -51,4 +54,10 @@ const CreatePlanning = () => {
   );
 };
 
-export default CreatePlanning;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createPlanning: (planning) => dispatch(createPlanning(planning))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CreatePlanning);
