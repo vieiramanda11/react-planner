@@ -21,6 +21,10 @@ const initState = {
 const planningReducer = (state = initState, action) => {
   if (action.type === 'CREATE_PLANNING') {
     console.log('created planning', action.planning)
+    return state;
+  } else if (action.type === 'CREATE_PLANNING_ERROR') {
+    console.log('error', action.err);
+    return state;
   }
   return state;
 };
