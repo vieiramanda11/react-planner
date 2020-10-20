@@ -22,7 +22,6 @@ const Dashboard = ({ plannings }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     plannings: state.firestore.ordered.plannings
   };
